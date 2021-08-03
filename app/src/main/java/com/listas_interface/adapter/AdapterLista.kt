@@ -3,13 +3,11 @@ package com.listas_interface.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.Button
-import android.widget.ListAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.listas_interface.MainActivity
 import com.listas_interface.R
+import com.listas_interface.model.Product
 
 //depois criar o viewholder -> passar a classe do tipo adapter : RecyclerView.Adapter<ItensCarrinhoViewHolder>()
 class AdapterList(
@@ -29,23 +27,29 @@ class AdapterList(
     //aqui que manipulamos os dados de cada item (tela x elementos + index) e jogamos os dados para a tela, add os eventos como o click
     override fun onBindViewHolder(itensCarrinhoViewHolder: ItensCarrinhoViewHolder, position: Int) {
 
-//        listOfProduct[position].apply {
-//            ItensCarrinhoViewHolder.bind(this)
-//        }
+        val produtoSelecionado = listOfProduct[position]
+
+        itensCarrinhoViewHolder.itemView.findViewById<TextView>(R.id.idProduct).apply {
+           text = produtoSelecionado.product
+       }
+
+        itensCarrinhoViewHolder.itemView.findViewById<TextView>(R.id.idValue).apply {
+            text = produtoSelecionado.value
+        }
 
 
         itensCarrinhoViewHolder.itemView.findViewById<Button>(R.id.buttonDelete).setOnClickListener {
-            val produtoSelecionadoParaDeletar = listOfProduct[position]
-            interfaceClickableCarrinho.onDelete(produtoSelecionadoParaDeletar)
+            interfaceClickableCarrinho.onDelete(produtoSelecionado)
         }
         itensCarrinhoViewHolder.itemView.findViewById<Button>(R.id.buttonNew).setOnClickListener {
-            val produtoSelecionadoParaAdd = listOfProduct[position]
-            interfaceClickableCarrinho.onNew(produtoSelecionadoParaAdd)
+            interfaceClickableCarrinho.onNew(produtoSelecionado)
         }
 
 
 
     }
+
+
    //define quantos elementos o recycler view irá precisar criar
     override fun getItemCount(): Int {
         return listOfProduct.size
@@ -69,15 +73,6 @@ class AdapterList(
 class ItensCarrinhoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-    fun bind(product: Product) {
 
-        itemView.findViewById<TextView>(R.id.idProduct).apply {
-            text = product.product
-        }
-        itemView.findViewById<TextView>(R.id.idValue).apply {
-            text = product.value
 
-        }
-
-    }
 }

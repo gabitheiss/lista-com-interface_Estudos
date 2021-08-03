@@ -1,4 +1,4 @@
-package com.listas_interface.adapter
+package com.listas_interface.model
 
 data class Product(
     var product: String,

@@ -1,12 +1,10 @@
 package com.listas_interface
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.listas_interface.adapter.Product
+import com.listas_interface.model.Product
 import com.listas_interface.adapter.AdapterList
 import com.listas_interface.adapter.InterfaceClickableCarrinho
 
