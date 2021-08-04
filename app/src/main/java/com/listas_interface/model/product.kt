@@ -1,6 +1,6 @@
 package com.listas_interface.model
 
-data class Product(
+data class product(
     var product: String,
     var value: String
 )

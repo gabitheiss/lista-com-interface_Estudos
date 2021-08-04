@@ -7,11 +7,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.listas_interface.R
-import com.listas_interface.model.Product
+import com.listas_interface.model.product
 
 //depois criar o viewholder -> passar a classe do tipo adapter : RecyclerView.Adapter<ItensCarrinhoViewHolder>()
 class AdapterList(
-    var listOfProduct: MutableList<Product>,
+    var listOfProduct: MutableList<product>,
     var interfaceClickableCarrinho: InterfaceClickableCarrinho) : RecyclerView.Adapter<ItensCarrinhoViewHolder>() {
 
 
@@ -56,11 +56,11 @@ class AdapterList(
     }
 
 
-    fun removeAt(product: Product){
+    fun removeAt(product: product){
         listOfProduct.remove(product)
         notifyDataSetChanged()
 
-    } fun add(product: Product){
+    } fun add(product: product){
         listOfProduct.add(product)
         notifyDataSetChanged()
     }

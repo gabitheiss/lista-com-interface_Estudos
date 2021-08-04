@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.listas_interface.model.Product
+import com.listas_interface.model.product
 import com.listas_interface.adapter.AdapterList
 import com.listas_interface.adapter.InterfaceClickableCarrinho
 
@@ -21,12 +21,12 @@ class MainActivity : AppCompatActivity(), InterfaceClickableCarrinho {
         setContentView(R.layout.activity_main)
 
         // usamos o mutable para conseguir trabalhar com a lista
-        val listOfProduct = mutableListOf<Product>(
-            Product("TV","R$2.000,00"),
-            Product("Smarphone","R$3.000,00"),
-            Product("Soundbar","R$1.500,00"),
-            Product("Ar Condicionado","R$1.800,00"),
-            Product("Aparelho de Som","R$1.000,00"),
+        val listOfProduct = mutableListOf<product>(
+            product("TV","R$2.000,00"),
+            product("Smarphone","R$3.000,00"),
+            product("Soundbar","R$1.500,00"),
+            product("Ar Condicionado","R$1.800,00"),
+            product("Aparelho de Som","R$1.000,00"),
 
         )
 
@@ -45,19 +45,19 @@ class MainActivity : AppCompatActivity(), InterfaceClickableCarrinho {
 
     }
 
-    override fun onEdit(product: Product) {
+    override fun onEdit(product: product) {
 
     }
 
-    override fun onDelete(product: Product) {
+    override fun onDelete(product: product) {
         if (listaRecyclerView.adapter is AdapterList) {
             (listaRecyclerView.adapter as AdapterList).removeAt(product)
         }
     }
 
-    override fun onNew(product: Product) {
+    override fun onNew(product: product) {
         if (listaRecyclerView.adapter is AdapterList) {
-            (listaRecyclerView.adapter as AdapterList).add(Product("Microondas", "R$700,00",))
+            (listaRecyclerView.adapter as AdapterList).add(product("Microondas", "R$700,00",))
         }
       }
     }
