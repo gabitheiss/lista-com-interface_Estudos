@@ -2,8 +2,12 @@ package com.listas_interface
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
+import com.google.android.material.snackbar.Snackbar
 import com.listas_interface.model.product
 import com.listas_interface.adapter.AdapterList
 import com.listas_interface.adapter.InterfaceClickableCarrinho
@@ -46,7 +50,8 @@ class MainActivity : AppCompatActivity(), InterfaceClickableCarrinho {
     }
 
     override fun onEdit(product: product) {
-
+        //foi criado uma extension com o nome concatWithCompany
+     //showMessage(listaRecyclerView, produtosAdapterList.nome.concatNameWithCompany)
     }
 
     override fun onDelete(product: product) {
@@ -61,3 +66,17 @@ class MainActivity : AppCompatActivity(), InterfaceClickableCarrinho {
         }
       }
     }
+
+   fun AppCompatActivity.showMessage(view: View, message: String){
+     Snackbar.make(view, message,LENGTH_LONG).show()
+   }
+
+
+   //criando e aplicando extension
+
+   val retorno = "000.000.000-00".removeCaracter()
+
+   fun String.removeCaracter(): String {
+       return replace(".","").replace("-","")
+
+   }
